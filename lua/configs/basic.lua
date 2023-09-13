@@ -50,3 +50,13 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+-- lua autocmd
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.lua"},
+  callback = function(ev)
+    vim.opt.tabstop = 2
+    vim.opt.shiftwidth = 2
+    vim.opt.softtabstop = 2
+  end
+})
